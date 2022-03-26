@@ -5,9 +5,12 @@
   "keywords": ["typescript", "react", "starter"],
   "main": "src/index.tsx",
   "dependencies": {
+    "@types/tape": "4.13.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-scripts": "4.0.3"
+    "react-scripts": "4.0.3",
+    "tape": "5.5.2",
+    "ts-node": "10.7.0"
   },
   "devDependencies": {
     "@types/react": "17.0.20",
@@ -17,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "ts-node tape ./src/robot.spec.ts",
     "eject": "react-scripts eject"
   },
   "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]

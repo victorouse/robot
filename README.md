@@ -1,2 +1,6 @@
 # robot
-Created with CodeSandbox
+
+```bash
+$ npm run start
+$ npm run test
+```
