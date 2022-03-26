@@ -171,7 +171,6 @@ export default function App() {
 
   return (
     <div>
-      <pre>{JSON.stringify(state, null, 2)}</pre>
       <Board
         rows={state.rows}
         columns={state.columns}
@@ -231,17 +230,21 @@ export default function App() {
       >
         Report
       </button>
+
+      <pre>{JSON.stringify(state, null, 2)}</pre>
     </div>
   )
 }
+
+const CELL_SIZE = 100
 
 function Board(props: State) {
   return (
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: `repeat(${props.columns}, 100px)`,
-        gridTemplateRows: `repeat(${props.rows}, 100px)`,
+        gridTemplateColumns: `repeat(${props.columns}, ${CELL_SIZE}px)`,
+        gridTemplateRows: `repeat(${props.rows}, ${CELL_SIZE}px)`,
         gap: '10px'
       }}
     >
@@ -254,7 +257,6 @@ function Board(props: State) {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              minHeight: '100px',
               backgroundColor:
                 props.location?.x === x && props.location?.y === y
                   ? 'lightskyblue'
