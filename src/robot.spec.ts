@@ -20,6 +20,8 @@ test('prevent the robot from falling off the table', (t) => {
     type: 'MoveAction'
   })
   t.same(s5, s4, 'robot has not moved otherwise it would fall')
+
+  t.end()
 })
 
 test('discard all commands in a sequence until a valid PLACE command has been executed', (t) => {
@@ -58,12 +60,16 @@ test('discard all commands in a sequence until a valid PLACE command has been ex
     { ...s6, location: { x: 2, y: 2 }, direction: Direction.North },
     'robot has been placed at (2, 2) facing North'
   )
+
+  t.end()
 })
 
 test('robot can move in all directions', (t) => {
   t.same(true, true, 'trivial, left for exercise')
+  t.end()
 })
 
 test('robot can rotate left and right facing all directions', (t) => {
   t.same(true, true, 'trivial, left for exercise')
+  t.end()
 })
