@@ -12,21 +12,25 @@ export enum Direction {
 
 export type Rotation = 'left' | 'right'
 
-export type Action =
-  | {
-      type: 'PlaceAction'
-      payload: RobotLocation & { direction: Direction }
-    }
-  | {
-      type: 'RotateAction'
-      payload: Rotation
-    }
-  | {
-      type: 'MoveAction'
-    }
-  | {
-      type: 'ReportAction'
-    }
+export interface PlaceAction {
+  type: 'PlaceAction'
+  payload: RobotLocation & { direction: Direction }
+}
+
+export interface RotateAction {
+  type: 'RotateAction'
+  payload: Rotation
+}
+
+export interface MoveAction {
+  type: 'MoveAction'
+}
+
+export interface ReportAction {
+  type: 'ReportAction'
+}
+
+export type RobotAction = PlaceAction | RotateAction | MoveAction | ReportAction
 
 export interface State {
   rows: number
@@ -47,18 +51,18 @@ function isOutOfBounds(
   columns: number,
   location: RobotLocation
 ): boolean {
-  // Location (x, y) values are technically
-  // zero-based indexes, so we need to +1 them
-  // when checking bounds.
   return (
     location.x < 0 ||
-    location.x + 1 > columns ||
     location.y < 0 ||
+    // Location (x, y) values are technically
+    // zero-based indexes, so we need to +1 them
+    // when checking bounds.
+    location.x + 1 > columns ||
     location.y + 1 > rows
   )
 }
 
-export function randomlyPlace(columns: number, rows: number) {
+export function placeRandomly(columns: number, rows: number) {
   return {
     x: Math.floor(Math.random() * columns),
     y: Math.floor(Math.random() * rows),
@@ -114,7 +118,7 @@ function move(location: RobotLocation, direction: Direction): RobotLocation {
   }
 }
 
-export function reducer(state: State, action: Action): State {
+export function reducer(state: State, action: RobotAction): State {
   switch (action.type) {
     case 'ReportAction':
       if (state.location && state.direction) {

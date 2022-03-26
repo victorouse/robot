@@ -1,6 +1,6 @@
 import { useReducer } from 'react'
 
-import { reducer, initialState, randomlyPlace, State, Direction } from './robot'
+import { reducer, initialState, placeRandomly, State, Direction } from './robot'
 
 export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -18,7 +18,7 @@ export default function App() {
         onClick={() =>
           dispatch({
             type: 'PlaceAction',
-            payload: randomlyPlace(state.columns, state.rows)
+            payload: placeRandomly(state.columns, state.rows)
           })
         }
       >
@@ -111,7 +111,7 @@ function Board(props: State) {
                     [Direction.East]: '👉',
                     [Direction.West]: '👈'
                   }[props.direction]) ||
-                '‍'}
+                ''}
               )
             </pre>
           </div>

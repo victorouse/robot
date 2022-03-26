@@ -9,7 +9,9 @@
   ],
   "main": "src/index.tsx",
   "dependencies": {
+    "@types/prompts": "^2.0.14",
     "@types/tape": "4.13.2",
+    "prompts": "^2.4.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "4.0.3",
@@ -25,6 +27,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "ts-node ./node_modules/.bin/tape ./src/robot.spec.ts",
+    "cli": "ts-node src/cli.ts",
     "eject": "react-scripts eject"
   },
   "browserslist": [
