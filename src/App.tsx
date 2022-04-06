@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import React, { useReducer } from 'react'
 
 import { reducer, initialState, placeRandomly, State, Direction } from './robot'
 

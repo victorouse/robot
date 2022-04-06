@@ -162,6 +162,7 @@ export function reducer(state: State, action: RobotAction): State {
           }
         }
       }
+      return state
 
     default:
       return state
